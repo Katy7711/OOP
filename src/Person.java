@@ -1,17 +1,20 @@
+import java.time.LocalDate;
+
 public class Person {
 
     String name;
-    int age;
-    String city;
+    private final int age;
+    private String city;
     String job;
+    private final int yearOfBirth;
 
 
-
-     Person(String name, int age, String city, String job) {
+    Person(String name, int age, String city, String job) {
         this.name = name;
         this.age = Math.max(age, 0);
         this.city = city;
         this.job = job;
+        this.yearOfBirth = LocalDate.now().getYear() - getAge();
 
         }
 
@@ -42,9 +45,13 @@ public class Person {
         return job;
     }
 
+
     @Override
     public String toString() {
-        return ("Привет! Меня зовут " + getName() + ". Я из города " + getCity() + ". Мне " + getAge() + " лет. Я работаю на должности " + getJob() + ". Будем знакомы!");
+        return ("Привет! Меня зовут " + getName() + ". Я из города " + getCity() + ". Я родился в " + getYearOfBirth() + " году. Я работаю на должности " + getJob() + ". Будем знакомы!");
     }
 
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
 }
